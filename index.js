@@ -1,64 +1,32 @@
-// Complete the following functions to make our program work!
+/**
+ * One yard is 0.9144 meters.
+ * @param {number} yards
+ * @returns {number} the given distance in `yards` converted to meters
+ */
+function convertToMeters(yards) {return yards * 0.9144;}
+console.log(convertToMeters(200))
 
 /**
- * Converts the given Fahrenheit temperature `f` to Celsius.
- * @param {number} f temperature in °F
- * @returns {number} temperature in °C
+ * Describes the given distance after converting it from yards to meters.
+ * - If the distance is greater than 1000 meters, it's longer than a kilometer.
+ * - If the distance is greater than 100 meters, it's longer than a hectometer.
+ * - If the distance is greater than 10 meters, it's longer than a decameter.
+ * - Otherwise, the distance is longer than a sandwich.
+ * @example
+ * describeDistance(100);
+ * // Returns "100 yards is 91.44 meters, which is longer than a decameter!"
+ * @param {number} yards
+ * @returns {string} A description of the given distance.
  */
-function convertToCelsius(f) {
-  // TODO
+function describeDistance(yards) {
+    let meters = yards * 0.9144;
+    if (meters > 1000) {console.log(`${yards} yards is ${meters} meters, which is longer than a kilometer.`)} 
+    else if (meters > 100) {console.log(`${yards} yards is ${meters} meters, which is longer than a hectometer.`)}
+    else if (meters > 10) {console.log(`${yards} yards is ${meters} meters, which is longer than a decameter.`)}
+    else {console.log(`The distance is longer than a sandwich.`)}
 }
-
-/**
- * | Temperature | Description |
- * | ----------- | ----------- |
- * | < 32        | "very cold" |
- * | < 64        | "cold"      |
- * | < 86        | "warm"      |
- * | < 100       | "hot"       |
- * | >= 100      | "very hot"  |
- *
- * @param {number} f temperature in °F
- * @returns {string} the description from the table above corresponding to
- * the given Fahrenheit temperature `f`
- */
-function describeTemperature(f) {
-  // TODO
-}
-
-/**
- * @param {number} limit
- * @returns {number} a random integer in the range [0, `limit`)
- */
-function getRandomInt(limit) {
-  // TODO
-}
-
-// -------------------- DO NOT CHANGE THE CODE BELOW ---------------------- //
-/**
- * Converts the given temperature from Fahrenheit to Celsius,
- * then alerts the user with a descriptive message.
- * @param {number} f temperature in °F
- */
-function parseFahrenheit(f) {
-  const c = convertToCelsius(f);
-  const description = describeTemperature(f);
-  const message = `${f}°F is ${c}°C. That is ${description}.`;
-  alert(message);
-}
-
-const fahrenheitPrompt =
-  "Please enter a number. We will convert that temperature from Fahrenheit to Celsius.";
-let f = prompt(fahrenheitPrompt);
-parseFahrenheit(+f);
-
-alert("Let's try that again.");
-f = prompt(fahrenheitPrompt);
-parseFahrenheit(+f);
-
-alert("Let's try some random temperatures.");
-f = getRandomInt(110);
-parseFahrenheit(f);
-
-f = getRandomInt(110);
-parseFahrenheit(f);
+console.log(describeDistance(99999));
+console.log(describeDistance(9999));
+console.log(describeDistance(200));
+console.log(describeDistance(100));
+console.log(describeDistance(1));
