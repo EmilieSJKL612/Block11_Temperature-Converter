@@ -19,14 +19,23 @@ console.log(convertToMeters(200))
  * @returns {string} A description of the given distance.
  */
 function describeDistance(yards) {
-    let meters = yards * 0.9144;
-    if (meters > 1000) {console.log(`${yards} yards is ${meters} meters, which is longer than a kilometer.`)} 
-    else if (meters > 100) {console.log(`${yards} yards is ${meters} meters, which is longer than a hectometer.`)}
-    else if (meters > 10) {console.log(`${yards} yards is ${meters} meters, which is longer than a decameter.`)}
-    else {console.log(`The distance is longer than a sandwich.`)}
+    // let meters = yards * 0.9144;
+    const meters = convertToMeters(yards);
+    if (meters > 1000) {return (`${yards} yards is ${meters} meters, which is longer than a kilometer.`)} 
+    else if (meters > 100) {return (`${yards} yards is ${meters} meters, which is longer than a hectometer.`)}
+    else if (meters > 10) {return (`${yards} yards is ${meters} meters, which is longer than a decameter.`)}
+    else {return (`The distance is longer than a sandwich.`)}
 }
+
 console.log(describeDistance(99999));
 console.log(describeDistance(9999));
 console.log(describeDistance(200));
 console.log(describeDistance(100));
 console.log(describeDistance(1));
+
+
+const yards = parseFloat(prompt("Please enter a distance in yards: "));
+
+const description = describeDistance(yards);
+
+alert(description);
